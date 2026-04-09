@@ -20,8 +20,8 @@
         @foreach ($tasks as $task)
             <tr>
                 <td>{{ $task->title }}</td>
-                <td>{{ $task->description }}</td>
-                <td>{{ $task->status }}</td>
+                <td>{{ \Illuminate\Support\Str::words($task->description, 12, '...') }}</td>
+                <td>{{ ucfirst(str_replace('_', ' ', $task->status)) }}</td>
                 <td>
                     <a href="{{ route('tasks.edit', $task) }}" class="btn btn-warning btn-sm">Edit</a>
 
