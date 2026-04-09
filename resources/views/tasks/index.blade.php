@@ -93,7 +93,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="4" class="text-center py-4 text-muted">
-                                            No tasks found 🚀
+                                            <h4>No tasks found 🚀</h4>
                                         </td>
                                     </tr>
                                 @endforelse
