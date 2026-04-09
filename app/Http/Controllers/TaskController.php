@@ -26,8 +26,9 @@ class TaskController extends Controller {
      */
     public function store( Request $request ) {
         $request->validate( [
-            'title'  => 'required|max:255',
-            'status' => 'required',
+            'title'       => 'required|max:255',
+            'description' => 'nullable|max:1000',
+            'status'      => 'required|in:pending,in_progress,completed',
         ] );
 
         Task::create( $request->all() );
