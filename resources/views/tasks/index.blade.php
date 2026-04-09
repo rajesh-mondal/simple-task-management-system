@@ -25,7 +25,8 @@
                 <td>
                     <a href="{{ route('tasks.edit', $task) }}" class="btn btn-warning btn-sm">Edit</a>
 
-                    <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
+                    <form action="{{ route('tasks.destroy', $task) }}" method="POST" onsubmit="return confirmDelete()"
+                        style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm">Delete</button>
