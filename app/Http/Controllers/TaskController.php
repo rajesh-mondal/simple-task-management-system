@@ -70,4 +70,10 @@ class TaskController extends Controller {
         $task->delete();
         return redirect()->route( 'tasks.index' )->with( 'success', 'Task deleted!' );
     }
+
+    public function deleteAll() {
+        Task::truncate();
+
+        return redirect()->route( 'tasks.index' )->with( 'success', 'All tasks deleted!' );
+    }
 }

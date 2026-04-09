@@ -3,7 +3,20 @@
 @section('content')
     <h2>Task List</h2>
 
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3">Add Task</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div>
+            <a href="{{ route('tasks.create') }}" class="btn btn-primary">Add Task</a>
+        </div>
+
+        <form action="{{ route('tasks.deleteAll') }}" method="POST"
+            onsubmit="return confirm('Are you sure you want to delete ALL tasks?')">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-outline-danger">Delete All</button>
+        </form>
+
+    </div>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
