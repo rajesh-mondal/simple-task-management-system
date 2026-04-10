@@ -1,58 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 Task Manager Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A simple yet efficient Task Management system built using the Laravel framework, designed to help users organize and manage their daily tasks with ease. The application provides a clean and intuitive interface where users can create, update, and delete tasks while keeping track of their progress through structured status categories.
 
-## About Laravel
+The application includes basic validation, pagination for better data handling, and confirmation prompts for safe deletion, ensuring a smooth and user-friendly experience.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Task Management:** Easily create, update, and delete tasks with a simple and intuitive interface.
 
-## Learning Laravel
+- **Status Tracking:** Assign and manage task statuses such as Pending, In Progress, and Completed.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Bulk Deletion:** Remove all tasks at once with a confirmation prompt to prevent accidental actions.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Pagination:** Displays tasks in a paginated format (10 per page) for better performance and usability.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- **Input Validation:** Ensures required fields like title are properly validated before submission.
 
-## Agentic Development
+- **User-Friendly Interface:** Clean and responsive UI built with Bootstrap for better user experience.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+
+## 🛠 Tech Stack
+
+- **Framework:** Laravel (PHP) – Utilizing MVC architecture for scalability and security.  
+- **Database:** MySQL – Relational database for efficient management of records.  
+- **Frontend:** Bootstrap & JavaScript – Ensuring a responsive and interactive user interface.
+
+
+## 🤔 Assumptions & Decisions
+
+- Task status is limited to three predefined values: `pending`, `in_progress`, and `completed`
+- Basic validation is applied on form inputs (e.g., title is required)
+- Pagination is limited to 10 tasks per page for better usability
+- A confirmation dialog is used before deleting tasks to prevent accidental actions
+- `truncate()` is used for "Delete All" functionality for simplicity and performance
+
+
+## 🧪 Testing Approach
+
+Basic feature tests were implemented to ensure core functionalities work correctly:
+
+- Task creation
+- Validation handling
+- Task update
+- Task deletion
+- Route accessibility
+
+Laravel’s built-in testing tools and `RefreshDatabase` trait were used to ensure:
+
+- Clean database state before each test
+- Reliable and repeatable test execution
+
+Run tests using:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+php artisan test
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## ⚙️ Installation and Setup
 
-## Contributing
+Follow these steps to get a local copy of the project up and running.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+### 1. Clone the repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/rajesh-mondal/simple-task-management-system.git
+cd simple-task-management-system
+```
 
-## Security Vulnerabilities
+### 2. Install Dependencies
+Install the backend dependencies using Composer:
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Environment Configuration
+1. Copy the example environment file:
+```bash
+cp .env.example .env
+```
 
-## License
+2. Generate a unique application key:
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. Generate a unique application key:
+Edit the `.env` file and update your database credentials, JWT secret (if required), and any other necessary configuration:
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=task_qtec
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Database Setup
+Run the migrations to create the necessary tables 
+```bash
+php artisan migrate
+```
+
+### 4. Running the Application
+Start the Laravel development server: 
+```bash
+php artisan serve
+```
+The application will typically be available at `http://127.0.0.1:8000`.
