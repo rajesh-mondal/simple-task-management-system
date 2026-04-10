@@ -10,7 +10,7 @@ class TaskController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
-        $tasks = Task::latest()->get();
+        $tasks = Task::latest()->paginate( 10 );
         return view( 'tasks.index', compact( 'tasks' ) );
     }
 
